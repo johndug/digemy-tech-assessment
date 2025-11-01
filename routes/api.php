@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\API\InvoiceController;
+use App\Http\Controllers\API\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +15,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/me', [AuthController::class, 'user'])->name('auth.me');
+
+    Route::group(['prefix' => 'invoices'], function () {
+        Route::get('/', [InvoiceController::class, 'index'])->name('invoices.index');
+        Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
+        Route::get('/{invoice}', [InvoiceController::class, 'show'])->name('invoices.show');
+        Route::put('/{invoice}', [InvoiceController::class, 'update'])->name('invoices.update');
+        Route::delete('/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
+    });
+
+    Route::group(['prefix' => 'payments'], function () {
+        Route::post('/', [PaymentController::class, 'store'])->name('payments.store');
+        Route::get('/{payment}', [PaymentController::class, 'show'])->name('payments.show');
+        Route::delete('/{payment}', [PaymentController::class, 'destroy'])->name('payments.destroy');
+    });
 });
+
+
+
