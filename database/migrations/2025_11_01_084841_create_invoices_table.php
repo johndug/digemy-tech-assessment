@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->text('description')->nullable();
             $table->decimal('total_amount', 10, 2);
             $table->string('state')->default('created');
             $table->timestamps();

@@ -33,6 +33,7 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
+            'description' => 'nullable|string',
             'total_amount' => 'required|numeric',
         ]);
 
@@ -56,6 +57,7 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
+            'description' => 'nullable|string',
             'total_amount' => 'required|numeric',
         ]);
 

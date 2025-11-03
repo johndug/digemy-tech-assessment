@@ -12,10 +12,11 @@
                 <div class="bg-gray-100 border-b border-gray-200">
                     <div class="grid grid-cols-12 gap-4 px-6 py-3 text-sm font-semibold text-gray-700">
                         <div class="col-span-1">ID</div>
-                        <div class="col-span-4">Title</div>
+                        <div class="col-span-2">Title</div>
+                        <div class="col-span-3">Description</div>
                         <div class="col-span-2">Total Amount</div>
                         <div class="col-span-2">State</div>
-                        <div class="col-span-3 text-center">Actions</div>
+                        <div class="col-span-2 text-center">Actions</div>
                     </div>
                 </div>
                 <div class="divide-y divide-gray-200">
@@ -25,12 +26,13 @@
                             :class="{ 'opacity-50 pointer-events-none': loadingInvoice && deletingInvoiceId === invoice.id }"
                         >
                             <div class="col-span-1 text-gray-900">{{ invoice.id }}</div>
-                            <div class="col-span-4 text-gray-700">{{ invoice.title }}</div>
+                            <div class="col-span-2 text-gray-700">{{ invoice.title }}</div>
+                            <div class="col-span-3 text-gray-700">{{ invoice.description }}</div>
                             <div class="col-span-2 text-gray-900 font-medium">{{ numberToCurrency(invoice.total_amount) }}</div>
                             <div class="col-span-2">
                                 <InvoiceState :state="invoice.state" />
                             </div>
-                            <div class="col-span-3 text-center space-x-2">
+                            <div class="col-span-2 text-center space-x-2">
                                 <button
                                     class="px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition-colors"
                                     @click="handleView(invoice.id)"

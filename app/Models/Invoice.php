@@ -16,6 +16,7 @@ class Invoice extends Model
 
     protected $fillable = [
         'title',
+        'description',
         'total_amount',
     ];
 
@@ -26,7 +27,8 @@ class Invoice extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('title', 'like', '%' . $search . '%');
+        return $query->where('title', 'like', '%' . $search . '%')
+            ->orWhere('description', 'like', '%' . $search . '%');
     }
 
     protected function registerStates(): void

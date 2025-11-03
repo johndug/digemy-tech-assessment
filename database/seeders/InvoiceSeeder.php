@@ -15,11 +15,13 @@ class InvoiceSeeder extends Seeder
     {
         Invoice::create([
             'title' => 'Test Invoice',
+            'description' => 'Test Invoice Description',
             'total_amount' => 100,
         ]);
 
         $invoice2 = Invoice::create([
             'title' => 'Test Invoice 2',
+            'description' => 'Test Invoice 2 Description',
             'total_amount' => 200,
         ]);
         (new CreatePayment())->handle([
@@ -33,6 +35,7 @@ class InvoiceSeeder extends Seeder
 
         $invoice3 = Invoice::create([
             'title' => 'Test Invoice 3',
+            'description' => 'Test Invoice 3 Description',
             'total_amount' => 300,
         ]);
         (new CreatePayment())->handle([
@@ -43,11 +46,13 @@ class InvoiceSeeder extends Seeder
 
         Invoice::create([
             'title' => 'Test Invoice 4',
+            'description' => 'Test Invoice 4 Description',
             'total_amount' => 400,
         ]);
 
         $invoice5 = Invoice::create([
             'title' => 'Test Invoice 5',
+            'description' => 'Test Invoice 5 Description',
             'total_amount' => 500,
         ]);
         (new CreatePayment())->handle([
