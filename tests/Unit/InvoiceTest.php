@@ -18,7 +18,6 @@ class InvoiceTest extends TestCase
     {
         $invoice = Invoice::create([
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 
@@ -31,7 +30,6 @@ class InvoiceTest extends TestCase
     {
         $invoice = Invoice::create([
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 
@@ -50,7 +48,6 @@ class InvoiceTest extends TestCase
     {
         $invoice = Invoice::create([
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 

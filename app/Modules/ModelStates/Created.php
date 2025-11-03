@@ -18,4 +18,14 @@ class Created extends InvoiceState
     {
         return 'created';
     }
+
+    public function description(): string
+    {
+        return 'Created';
+    }
+
+    public function font_color(): string
+    {
+        return 'black';
+    }
 }

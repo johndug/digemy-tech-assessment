@@ -12,6 +12,21 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .vue()
+    .webpackConfig({
+        resolve: {
+            alias: {
+                vue: 'vue/dist/vue.esm-bundler.js'
+            }
+        },
+        plugins: [
+            new (require('webpack')).DefinePlugin({
+                __VUE_OPTIONS_API__: 'true',
+                __VUE_PROD_DEVTOOLS__: 'false',
+                __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false'
+            })
+        ]
+    })
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);

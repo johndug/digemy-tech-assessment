@@ -33,7 +33,6 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'description' => 'required|string',
             'total_amount' => 'required|numeric',
         ]);
 
@@ -48,7 +47,7 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice): JsonResponse
     {
         return response()->json([
-            'data' => $invoice,
+            'data' => $invoice->load('payments'),
             'status' => Response::HTTP_OK,
         ]);
     }
@@ -57,7 +56,6 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'description' => 'required|string',
             'total_amount' => 'required|numeric',
         ]);
 

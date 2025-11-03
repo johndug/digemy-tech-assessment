@@ -18,4 +18,14 @@ class PartiallyPaid extends InvoiceState
     {
         return 'partially_paid';
     }
+
+    public function description(): string
+    {
+        return 'Partially paid';
+    }
+
+    public function font_color(): string
+    {
+        return 'black';
+    }
 }

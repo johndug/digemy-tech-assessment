@@ -14,7 +14,6 @@ class InvoiceTest extends TestCase
     {
         $response = $this->actingAs($this->user)->post('/api/invoices', [
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 
@@ -25,7 +24,6 @@ class InvoiceTest extends TestCase
     {
         Invoice::create([
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 
@@ -36,14 +34,12 @@ class InvoiceTest extends TestCase
                 '*' => [
                     'id',
                     'title',
-                    'description',
                     'total_amount',
                 ],
             ],
         ]);
         $response->assertJsonFragment([
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => '100.00',
         ]);
     }
@@ -52,7 +48,6 @@ class InvoiceTest extends TestCase
     {
         $invoice = Invoice::create([
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
         $response = $this->actingAs($this->user)->get('/api/invoices/' . $invoice->id);
@@ -63,18 +58,15 @@ class InvoiceTest extends TestCase
     {
         $invoice = Invoice::create([
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
         $response = $this->actingAs($this->user)->put('/api/invoices/' . $invoice->id, [
             'title' => 'Updated Test Invoice',
-            'description' => 'Updated Test Description',
             'total_amount' => 200,
         ]);
         $response->assertStatus(200);
         $response->assertJsonFragment([
             'title' => 'Updated Test Invoice',
-            'description' => 'Updated Test Description',
             'total_amount' => '200.00',
         ]);
     }
@@ -84,7 +76,6 @@ class InvoiceTest extends TestCase
         $invoice = Invoice::create([
             'id' => 1,
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 

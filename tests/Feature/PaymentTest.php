@@ -17,7 +17,6 @@ class PaymentTest extends TestCase
         Invoice::create([
             'id' => 1,
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 
@@ -34,7 +33,6 @@ class PaymentTest extends TestCase
         $invoice = Invoice::create([
             'id' => 1,
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
         $payment = Payment::create([
@@ -50,7 +48,6 @@ class PaymentTest extends TestCase
         $invoice = Invoice::create([
             'id' => 1,
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 
@@ -68,7 +65,6 @@ class PaymentTest extends TestCase
         $invoice = Invoice::create([
             'id' => 1,
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 
@@ -85,7 +81,6 @@ class PaymentTest extends TestCase
         $invoice = Invoice::create([
             'id' => 1,
             'title' => 'Test Invoice',
-            'description' => 'Test Description',
             'total_amount' => 100,
         ]);
 

@@ -31,19 +31,19 @@ class Invoice extends Model
             ->orWhere('description', 'like', '%' . $search . '%');
     }
 
-    // protected function registerStates(): void
-    // {
-    //     $this->addState('state', InvoiceState::class);
-    // }
+    protected function registerStates(): void
+    {
+        $this->addState('state', InvoiceState::class);
+    }
 
-    // protected static function booted(): void
-    // {
-    //     static::creating(function ($invoice) {
-    //         if (is_null($invoice->state)) {
-    //             $invoice->state = Created::class;
-    //         }
-    //     });
-    // }
+    protected static function booted(): void
+    {
+        static::creating(function ($invoice) {
+            if (is_null($invoice->state)) {
+                $invoice->state = Created::class;
+            }
+        });
+    }
 
     //
 
@@ -55,5 +55,20 @@ class Invoice extends Model
     public function totalPaid()
     {
         return $this->payments->sum('amount');
+    }
+
+    /**
+     * Override toArray and delegate state serialization to the state itself
+     */
+    public function toArray(): array
+    {
+        $array = parent::toArray();
+
+        // Rely on InvoiceState::jsonSerialize for full state details
+        if ($this->state instanceof InvoiceState) {
+            $array['state'] = $this->state;
+        }
+
+        return $array;
     }
 }

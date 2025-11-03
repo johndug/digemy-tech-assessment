@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Models\Payment;
 use Illuminate\Http\Response;
-use App\Actions\DeletePayment;
 use App\Actions\CreatePayment;
+use App\Actions\UpdateInvoiceState;
+use App\Models\Invoice;
 
 class PaymentController extends Controller
 {
@@ -37,7 +38,11 @@ class PaymentController extends Controller
 
     public function destroy(Payment $payment): JsonResponse
     {
-        (new DeletePayment())->handle($payment);
+        $invoice = Invoice::findOrFail($payment->invoice_id);
+
+        $payment->delete();
+
+        (new UpdateInvoiceState())->handle($invoice);
 
         return response()->json([
             'message' => 'Payment deleted successfully',

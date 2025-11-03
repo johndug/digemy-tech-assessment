@@ -18,4 +18,14 @@ class FullyPaid extends InvoiceState
     {
         return 'fully_paid';
     }
+
+    public function description(): string
+    {
+        return 'Paid in full';
+    }
+
+    public function font_color(): string
+    {
+        return 'black';
+    }
 }
