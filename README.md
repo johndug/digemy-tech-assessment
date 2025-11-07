@@ -20,11 +20,24 @@ login credentials:
 admin@example.com
 password
 
-After login you are routed to  an Invoise Dashboard with a few test invoices with model states. Click View to see the payments made, make payments and delete payments. After successfully making a payment the state will change accoding to the amount added.
+After login you are routed to an Invoice Dashboard with a few test invoices with model states. Click View to see the payments made, make payments and delete payments. After successfully making a payment the state will change accoding to the amount added.
 
 ## Assumptions
 
 All logged in users are admin users which will be able to change invoices.
+
+## Things still need to be done
+
+- [ ] check cors between the fe and be
+- [ ] On tthe api error handling use a exception handler to handle the response
+- [ ] update to modern standards, laravel framework and vite bundler
+- [ ] Make response file to better handler the data
+
+## Prep for production
+
+- [ ] error handling through sentry or similar
+- [ ] throttling and rate limitting for high volumes of users
+- [ ] install load balance for high volumes
 
 ## To The Future
 
